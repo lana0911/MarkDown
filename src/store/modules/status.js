@@ -21,6 +21,7 @@ export const status = {
         type: '',
         name: ''
     },
+    actions: {},
 
     ImgURl: ''
   },
@@ -59,6 +60,9 @@ export const status = {
     setImgURL (state, url) {
         var fullPath = url + "/mdapi/api/markdown/file/path/?file_path="
         state.ImgURl = fullPath
+    },
+    setActions(state, pair) {
+        state.actions = pair
     },
   }
 }

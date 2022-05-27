@@ -36,6 +36,7 @@
 <script>
 import store from '@/store'
 import basicapi from '@/api/basic'
+import roleapi from '@/api/role'
 import { defineComponent, onMounted, ref, computed } from 'vue'
 import { findFirstMd, getThatMd, DirObj, treeHelper, sortTree } from '@/hooks'
 //comp
@@ -161,9 +162,30 @@ export default defineComponent({
       run.value= true
     }
 
+    const roleAction = async(data) =>{
+      data.forEach((menu) =>{
+        if(menu.menuTitle == 'MarkDown'){
+          var act = {
+            create: menu.actions.create,
+            delete: menu.actions.delete,
+            readSingle: menu.actions.readSingle,
+            update: menu.actions.update
+          }
+          store.commit('status/setActions', act)
+        }
+      })
+      
+    }
+    const role = ref([])
+
     const byOrder = async() =>{
       console.log("byOrder")
       try{
+        //單獨app才用
+        role.value = await roleapi.getItemById(1)
+        roleAction(role.value.back_permissions)
+
+
         //1. Get Title
         title.value = await basicapi.GetTitle(1)
         //2. Get Versions

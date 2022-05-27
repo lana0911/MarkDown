@@ -205,6 +205,7 @@ export default defineComponent({
 
     onMounted(()=>{
       // ShowBtns.value = router.currentRoute.value.meta.actions
+      ShowBtns.value = store.state.status.actions
     })
 
 
