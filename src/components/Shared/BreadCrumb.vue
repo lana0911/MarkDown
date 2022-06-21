@@ -29,12 +29,12 @@ export default defineComponent({
 </script>
 
 
-<style lang="scss" scoped>
-#BreadCrumb {
-  display: flex;
-  height: 100%;
-  width: 90%;
-  align-items: center;
-  padding-left: 2%;
-}
+<style lang="sass" scoped>
+#BreadCrumb 
+  display: flex
+  height: 100%
+  width: 90%
+  align-items: center
+  padding-left: 2%
+
 </style>
